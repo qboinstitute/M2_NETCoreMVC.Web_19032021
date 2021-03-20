@@ -1,0 +1,47 @@
+﻿@*@using M2_NETCoreMVC.Web.Areas.Marketing.Models*@
+
+@model IEnumerable<M2_NETCoreMVC.Web.Areas.Marketing.Models.Product>
+
+@{ 
+
+    //var listadoNombres = Model.ListadoNombres;
+}
+<script src="~/lib/datatables.net/jquery.dataTables.js"></script>
+<link href="~/lib/datatables.net/datatables.css" rel="stylesheet" />
+
+<h1>Products With ViewModel</h1>
+
+
+
+<table id="tbProducts" class="table table-active">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Title</th>
+            <th>Marker</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Description</td>
+            <td>
+                <a href="@item.Url" target="_blank">@item.Title</a>
+            </td>
+            <td>@item.Maker</td>
+            <td>
+                <img src="@item.Img" style="height:40px;width:40px" alt="Mi Imagen" />
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+<script>
+    $('#tbProducts').DataTable();
+</script>
